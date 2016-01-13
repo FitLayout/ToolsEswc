@@ -674,6 +674,7 @@ public class LogicalTreeBuilder extends BaseLogicalTreeProvider
                 {
                     curTitle = a;
                     if (paperI == -1) paperI = i;
+                    curPages = null;
                 }
                 else if (curAuthors == null && a.hasTag(tagAuthor, ms))
                 {
@@ -682,7 +683,7 @@ public class LogicalTreeBuilder extends BaseLogicalTreeProvider
                 }
                 else if (curPages == null && a.hasTag(tagPages, ms))
                     curPages = a;
-                else //some duplicate
+                else if (paperI != -1) //some duplicate
                 {
                     curSection = findSection(paperI);
                     savePaper(curTitle, curAuthors, curPages, curSection);
