@@ -15,6 +15,8 @@ import org.fit.layout.api.AreaTreeOperator;
 import org.fit.layout.classify.op.TagEntitiesOperator;
 import org.fit.layout.classify.op.VisualClassificationOperator;
 import org.fit.layout.eswc.classify.ProgrammesFeatureExtractor;
+import org.fit.layout.eswc.tag.CountriesTagger;
+import org.fit.layout.eswc.tag.ShortNameTagger;
 import org.fit.layout.tools.BlockBrowser;
 
 /**

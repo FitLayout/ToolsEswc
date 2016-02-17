@@ -18,12 +18,12 @@ import java.util.regex.Pattern;
 import org.fit.layout.classify.taggers.DateTagger;
 import org.fit.layout.classify.taggers.LocationsTagger;
 import org.fit.layout.eswc.Countries;
-import org.fit.layout.eswc.CountriesTagger;
 import org.fit.layout.eswc.Event;
 import org.fit.layout.eswc.IndexFile;
 import org.fit.layout.eswc.SubtitleParser;
 import org.fit.layout.eswc.op.AreaUtils;
 import org.fit.layout.eswc.op.EswcTag;
+import org.fit.layout.eswc.tag.CountriesTagger;
 import org.fit.layout.impl.BaseLogicalTreeProvider;
 import org.fit.layout.model.Area;
 import org.fit.layout.model.AreaTree;
@@ -631,7 +631,7 @@ public class LogicalTreeBuilder extends BaseLogicalTreeProvider
         if (!found)
         {
             LocationsTagger ltg = new LocationsTagger(1);
-            Vector<String> cands = ltg.extract(affil);
+            List<String> cands = ltg.extract(affil);
             for (String cname : cands)
             {
                 String curi = Countries.getCountryUri(cname.trim());

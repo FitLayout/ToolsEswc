@@ -25,6 +25,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.fit.layout.classify.taggers.DateTagger;
+import org.fit.layout.eswc.tag.CountriesTagger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

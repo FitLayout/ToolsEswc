@@ -1,14 +1,15 @@
 /**
- * CountriesTagger.java
+ * ShortNameTagger.java
  *
- * Created on 30. 3. 2015, 13:30:19 by burgetr
+ * Created on 10. 4. 2015, 11:36:13 by burgetr
  */
-package org.fit.layout.eswc;
+package org.fit.layout.eswc.tag;
 
 import java.util.Vector;
 
-import org.fit.layout.classify.Tagger;
 import org.fit.layout.classify.TextTag;
+import org.fit.layout.classify.taggers.BaseTagger;
+import org.fit.layout.eswc.op.AreaUtils;
 import org.fit.layout.model.Area;
 import org.fit.layout.model.Tag;
 
@@ -16,25 +17,42 @@ import org.fit.layout.model.Tag;
  * 
  * @author burgetr
  */
-public class CountriesTagger implements Tagger
+public class ShortNameTagger extends BaseTagger
 {
+    
+    @Override
+    public String getId()
+    {
+        return "ESWC.ShortName";
+    }
+
+    @Override
+    public String getName()
+    {
+        return "Short names";
+    }
+
+    @Override
+    public String getDescription()
+    {
+        return "";
+    }
     
     public TextTag getTag()
     {
-        return new TextTag("countries", this);
+        return new TextTag("short", this);
     }
 
     public double getRelevance()
     {
-        return 0.95;
+        return 0.7;
     }
     
     public boolean belongsTo(Area node)
     {
         if (node.isLeaf())
         {
-            String text = node.getText();
-            return !Countries.getCountryNames(text).isEmpty();
+            return !AreaUtils.findShortTitles(node).isEmpty();
         }
         return false;
     }
@@ -56,6 +74,7 @@ public class CountriesTagger implements Tagger
     
     public Vector<String> extract(String src)
     {
-        return new Vector<String>(Countries.getCountryNames(src));
+        return AreaUtils.findShortTitles(src);
     }
+
 }

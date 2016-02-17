@@ -1,0 +1,4 @@
+org.fit.layout.eswc.tag.PagesTagger
+org.fit.layout.eswc.tag.SessionTagger
+org.fit.layout.eswc.tag.CountriesTagger
+org.fit.layout.eswc.tag.ShortNameTagger
