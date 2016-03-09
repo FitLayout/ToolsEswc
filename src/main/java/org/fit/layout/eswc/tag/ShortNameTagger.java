@@ -5,6 +5,8 @@
  */
 package org.fit.layout.eswc.tag;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 import org.fit.layout.classify.TextTag;
@@ -77,4 +79,12 @@ public class ShortNameTagger extends BaseTagger
         return AreaUtils.findShortTitles(src);
     }
 
+    @Override
+    public List<String> split(String src)
+    {
+        // TODO splitting is not implemented for this tagger; the whole string is returned
+        List<String> ret = new ArrayList<String>(1);
+        ret.add(src);
+        return ret;
+    }
 }

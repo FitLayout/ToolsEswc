@@ -5,6 +5,8 @@
  */
 package org.fit.layout.eswc.tag;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 import org.fit.layout.classify.TextTag;
@@ -76,5 +78,14 @@ public class CountriesTagger extends BaseTagger
     public Vector<String> extract(String src)
     {
         return new Vector<String>(Countries.getCountryNames(src));
+    }
+    
+    @Override
+    public List<String> split(String src)
+    {
+        // TODO splitting is not implemented for this tagger; the whole string is returned
+        List<String> ret = new ArrayList<String>(1);
+        ret.add(src);
+        return ret;
     }
 }

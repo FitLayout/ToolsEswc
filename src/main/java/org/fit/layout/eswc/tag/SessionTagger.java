@@ -1,5 +1,6 @@
 package org.fit.layout.eswc.tag;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 import java.util.regex.Matcher;
@@ -126,6 +127,15 @@ public class SessionTagger extends BaseTagger
                 ret.add(s);
         }
         
+        return ret;
+    }
+    
+    @Override
+    public List<String> split(String src)
+    {
+        // TODO splitting is not implemented for this tagger; the whole string is returned
+        List<String> ret = new ArrayList<String>(1);
+        ret.add(src);
         return ret;
     }
     
