@@ -22,6 +22,9 @@ import org.fit.layout.model.Tag;
  */
 public class PagesTagger extends BaseTagger
 {
+    private static final float YES = 0.95f;
+    private static final float NO = 0.0f;
+    
     protected Pattern pgexpr = Pattern.compile("[1-9][0-9]*(\\s*\\p{Pd}\\s*[1-9][0-9]*)?");
     
     @Override
@@ -47,12 +50,7 @@ public class PagesTagger extends BaseTagger
         return new TextTag("pages", this);
     }
 
-    public double getRelevance()
-    {
-        return 0.95;
-    }
-    
-    public boolean belongsTo(Area node)
+    public float belongsTo(Area node)
     {
         if (node.isLeaf())
         {
@@ -65,11 +63,11 @@ public class PagesTagger extends BaseTagger
                 if ((ms == 0 || text.charAt(ms) == ' ') &&
                     (me == text.length() || text.charAt(ms) == ' '))
                 {
-                    return true;
+                    return YES;
                 }
             }
         }
-        return false;
+        return NO;
     }
     
     public boolean allowsContinuation(Area node)

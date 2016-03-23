@@ -21,6 +21,8 @@ import org.fit.layout.model.Tag;
  */
 public class ShortNameTagger extends BaseTagger
 {
+    private static final float YES = 0.7f;
+    private static final float NO = 0.0f;
     
     @Override
     public String getId()
@@ -45,18 +47,13 @@ public class ShortNameTagger extends BaseTagger
         return new TextTag("short", this);
     }
 
-    public double getRelevance()
-    {
-        return 0.7;
-    }
-    
-    public boolean belongsTo(Area node)
+    public float belongsTo(Area node)
     {
         if (node.isLeaf())
         {
-            return !AreaUtils.findShortTitles(node).isEmpty();
+            return AreaUtils.findShortTitles(node).isEmpty() ? NO : YES;
         }
-        return false;
+        return NO;
     }
     
     public boolean allowsContinuation(Area node)

@@ -17,6 +17,8 @@ import org.fit.layout.model.Tag;
  */
 public class SessionTagger extends BaseTagger
 {
+    private static final float YES = 0.6f;
+    private static final float NO = 0.0f;
 
     protected final int MIN_WORDS = 2;
     /** The expression the whole area must start with */
@@ -62,12 +64,7 @@ public class SessionTagger extends BaseTagger
         return new TextTag("session", this);
     }
 
-    public double getRelevance()
-    {
-        return 0.6;
-    }
-    
-    public boolean belongsTo(Area node)
+    public float belongsTo(Area node)
     {
         if (node.isLeaf())
         {
@@ -83,12 +80,12 @@ public class SessionTagger extends BaseTagger
                     if (words.length >= MIN_WORDS
                         && !containsListedWord(blacklist, words)
                         /*&& containsListedWord(whitelist, words)*/)
-                        return true;
+                        return YES;
                 }
-                return false;
+                return NO;
             }
         }
-        return false;
+        return NO;
     }
 
     public boolean allowsContinuation(Area node)

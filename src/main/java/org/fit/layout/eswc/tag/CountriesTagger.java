@@ -21,6 +21,8 @@ import org.fit.layout.model.Tag;
  */
 public class CountriesTagger extends BaseTagger
 {
+    private static final float YES = 0.95f;
+    private static final float NO = 0.0f;
     
     @Override
     public String getId()
@@ -45,19 +47,14 @@ public class CountriesTagger extends BaseTagger
         return new TextTag("countries", this);
     }
 
-    public double getRelevance()
-    {
-        return 0.95;
-    }
-    
-    public boolean belongsTo(Area node)
+    public float belongsTo(Area node)
     {
         if (node.isLeaf())
         {
             String text = node.getText();
-            return !Countries.getCountryNames(text).isEmpty();
+            return Countries.getCountryNames(text).isEmpty() ? NO : YES;
         }
-        return false;
+        return NO;
     }
     
     public boolean allowsContinuation(Area node)
