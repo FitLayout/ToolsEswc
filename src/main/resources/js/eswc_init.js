@@ -26,7 +26,9 @@ function processPage(url)
 	//rendering
 	var srcConfig = {
 			width: 2400,
-			height: 800
+			height: 800,
+			useVisualBounds: false,
+			replaceImagesWithAlt: true
 	};
 	srcConfig.url = url;
 	proc.renderPage('FitLayout.CSSBox', srcConfig);
